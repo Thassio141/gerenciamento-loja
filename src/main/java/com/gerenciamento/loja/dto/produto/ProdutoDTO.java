@@ -1,4 +1,7 @@
 package com.gerenciamento.loja.dto.produto;
 
-public class ProdutoDTO {
+import lombok.Data;
+
+@Data
+public class ProdutoDTO extends ProdutoCreateDTO{
 }
