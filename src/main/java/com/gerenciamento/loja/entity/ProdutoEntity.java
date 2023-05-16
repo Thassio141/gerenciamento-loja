@@ -14,15 +14,16 @@ import lombok.Setter;
 @Entity
 public class ProdutoEntity {
     @Id
-    private Long id;
+    private Long idProduto;
 
-    private String nome;
+    private String nomeProduto;
 
     private String descricao;
 
     private Double preco;
 
+    private Integer quantidade;
+
     //TODO fazer relação com fornecedores / manytomany
     //TODO fazer relação com loja / manytomany
-    //TODO fazer relação com estoque / manytomany
 }
