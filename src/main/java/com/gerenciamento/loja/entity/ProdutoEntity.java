@@ -2,6 +2,8 @@ package com.gerenciamento.loja.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,6 +32,9 @@ public class ProdutoEntity {
 
     private Categoria categoria;
 
-//    private guardar imagem do produto
-//    private Fornecedor fornecedor; manytomany
+    private String urlImagem;
+
+    @ManyToOne
+    @JoinColumn(name = "fornecedor_id")
+    private Fornecedor fornecedor;
 }
