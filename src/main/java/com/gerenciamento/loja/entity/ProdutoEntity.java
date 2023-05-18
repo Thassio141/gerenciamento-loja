@@ -18,12 +18,18 @@ public class ProdutoEntity {
 
     private String nomeProduto;
 
-    private String descricao;
+    private String descricaoProduto;
 
     private Double preco;
 
     private Integer quantidade;
 
-    //TODO fazer relação com fornecedores / manytomany
-    //TODO fazer relação com loja / manytomany
+    private Boolean disponibilidade;
+
+    private String codigoBarras;
+
+    private Categoria categoria;
+
+//    private guardar imagem do produto
+//    private Fornecedor fornecedor; manytomany
 }
