@@ -36,5 +36,5 @@ public class ProdutoEntity {
 
     @ManyToOne
     @JoinColumn(name = "fornecedor_id")
-    private Fornecedor fornecedor;
+    private FornecedorEntity fornecedor;
 }
