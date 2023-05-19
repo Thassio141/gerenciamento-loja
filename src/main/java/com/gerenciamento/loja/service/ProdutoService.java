@@ -43,12 +43,31 @@ public class ProdutoService {
         return objectMapper.convertValue(produto, ProdutoDTO.class);
     }
 
-    public ProdutoDTO editarProduto(Integer idProduto, ProdutoCreateDTO produtoCreateDTO){
+    public ProdutoDTO editarProduto(Long idProduto, ProdutoCreateDTO produtoCreateDTO){
         ProdutoEntity produtoRecuperado = buscarPorId(idProduto);
-
+        produtoRecuperado.setNomeProduto(produtoCreateDTO.getNomeProduto());
+        produtoRecuperado.setDescricaoProduto(produtoCreateDTO.getDescricaoProduto());
+        produtoRecuperado.setCategoria(produtoCreateDTO.getCategoria());
+        produtoRecuperado.setCodigoBarras(produtoCreateDTO.getCodigoBarras());
+        produtoRecuperado.setPreco(produtoCreateDTO.getPreco());
+        produtoRecuperado.setQuantidade(produtoCreateDTO.getQuantidade());
+        produtoRecuperado.setUrlImagem(produtoCreateDTO.getUrlImagem());
+        produtoRepository.save(produtoRecuperado);
         return objectMapper.convertValue(produtoRecuperado,ProdutoDTO.class);
-    };
+    }
 
-    public ProdutoEntity buscarPorId(){};
-    public ProdutoDTO buscarPorIdDTO(){};
+    public void removerProduto(Long idProduto) {
+        ProdutoEntity produtoRecuperado = buscarPorId(idProduto);
+        produtoRecuperado.setDisponibilidade(Boolean.FALSE);
+        produtoRepository.save(produtoRecuperado);
+    }
+
+    public ProdutoEntity buscarPorId(Long idProduto){
+         return produtoRepository.findById(idProduto).orElseThrow();
+    }
+
+    public ProdutoDTO buscarPorIdDTO(Long idProduto){
+        ProdutoEntity produto = produtoRepository.findById(idProduto).orElseThrow();
+        return objectMapper.convertValue(produto,ProdutoDTO.class);
+    };
 }
